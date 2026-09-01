@@ -4,111 +4,684 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shawn Parkin | Portfolio</title>
+
+    <title>Shawn Parkin | Finance Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f6f8;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        /* ---------------- NAVBAR ---------------- */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: #111827;
+            padding: 15px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+
+        nav .logo {
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        nav .links {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        /* ---------------- HERO ---------------- */
+
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #111827, #1f2937);
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            margin-bottom: 10px;
+            letter-spacing: -2px;
+        }
+
+        .hero h2 {
+            font-size: 25px;
+            font-weight: normal;
+            color: #d1d5db;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            color: #9ca3af;
+            font-size: 17px;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #b31b34;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #8f1429;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            border: 1px solid #9ca3af;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #374151;
+        }
+
+        /* ---------------- GENERAL ---------------- */
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        section {
+            padding: 90px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 34px;
+            color: #111827;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #6b7280;
+        }
+
+        /* ---------------- ABOUT ---------------- */
+
+        .about-box {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+        }
+
+        .about-box p {
+            font-size: 17px;
+            color: #4b5563;
+        }
+
+        /* ---------------- SKILLS ---------------- */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 18px;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 25px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid #b31b34;
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .skill-card h3 {
+            font-size: 17px;
+            color: #111827;
+        }
+
+        /* ---------------- PROJECTS ---------------- */
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .project-number {
+            color: #b31b34;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .project-card h3 {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .project-card p {
+            color: #6b7280;
+        }
+
+        /* ---------------- RESUME ---------------- */
+
+        .resume-section {
+            background: #111827;
+            color: white;
+        }
+
+        .resume-section .section-title h2 {
+            color: white;
+        }
+
+        .resume-section .section-title p {
+            color: #9ca3af;
+        }
+
+        .resume-container {
+            background: #1f2937;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        iframe {
+            width: 100%;
+            height: 1000px;
+            border: none;
+            border-radius: 6px;
+            background: white;
+        }
+
+        /* ---------------- CONTACT ---------------- */
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .contact-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .contact-card a {
+            color: #b31b34;
+            text-decoration: none;
+            font-weight: bold;
+            word-break: break-word;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---------------- FOOTER ---------------- */
+
+        footer {
+            background: #0b1120;
+            color: #9ca3af;
+            text-align: center;
+            padding: 25px;
+            font-size: 14px;
+        }
+
+        /* ---------------- MOBILE ---------------- */
+
+        @media (max-width: 700px) {
+
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav .links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero h2 {
+                font-size: 20px;
+            }
+
+            section {
+                padding: 65px 0;
+            }
+
+            .about-box {
+                padding: 25px;
+            }
+
+            iframe {
+                height: 750px;
+            }
+        }
+
+    </style>
 </head>
 
 <body>
 
-    <header>
-        <h1>Shawn Parkin</h1>
-        <h2>Finance Student</h2>
-        <p>University of Utah</p>
-    </header>
+    <!-- NAVIGATION -->
 
-    <hr>
+    <nav>
 
-    <section>
-        <h2>About Me</h2>
-        <p>
-            I am a Finance student at the University of Utah interested in
-            investments, private equity, and financial analysis. I am interested
-            in learning how technology and artificial intelligence can be used
-            in finance to improve research, decision-making, and productivity.
-            My technical interests include Microsoft Excel, data analysis, AI
-            tools, HTML, and GitHub. I am currently developing these skills
-            through my coursework and projects while preparing for a career
-            in the finance and investment industry.
-        </p>
+        <div class="logo">
+            SP
+        </div>
+
+        <div class="links">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#resume">Resume</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>Shawn Parkin</h1>
+
+            <h2>Finance Student</h2>
+
+            <p>
+                University of Utah • Investments • Private Equity • Finance
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#resume" class="btn btn-primary">
+                    View Resume
+                </a>
+
+                <a href="#contact" class="btn btn-secondary">
+                    Contact Me
+                </a>
+
+            </div>
+
+        </div>
+
     </section>
 
-    <hr>
 
-    <section>
-        <h2>Skills</h2>
-        <ul>
-            <li>Microsoft Excel</li>
-            <li>Financial Analysis</li>
-            <li>Data Analysis</li>
-            <li>AI Tools</li>
-            <li>HTML</li>
-            <li>GitHub</li>
-            <li>Communication</li>
-            <li>Teamwork</li>
-        </ul>
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>About Me</h2>
+
+                <p>
+                    Finance, investing, and technology
+                </p>
+
+            </div>
+
+            <div class="about-box">
+
+                <p>
+                    I am a Finance student at the University of Utah with an
+                    interest in investments, private equity, and financial
+                    analysis. I am interested in how businesses make financial
+                    decisions and how capital can be used to create long-term
+                    value. I am also interested in artificial intelligence and
+                    how AI can improve financial research, analysis, and
+                    productivity. My technical interests include Microsoft
+                    Excel, data analysis, AI tools, HTML, and GitHub. I am
+                    continuing to develop my financial, analytical, and
+                    technical skills through coursework and projects while
+                    preparing for a career in the finance and investment
+                    industry.
+                </p>
+
+            </div>
+
+        </div>
+
     </section>
 
-    <hr>
 
-    <section>
-        <h2>Projects</h2>
+    <!-- SKILLS -->
 
-        <table border="1">
-            <tr>
-                <th>Project</th>
-                <th>Description</th>
-            </tr>
-            <tr>
-                <td>Project 1</td>
-                <td>Coming soon</td>
-            </tr>
-            <tr>
-                <td>Project 2</td>
-                <td>Coming soon</td>
-            </tr>
-            <tr>
-                <td>Project 3</td>
-                <td>Coming soon</td>
-            </tr>
-            <tr>
-                <td>Project 4</td>
-                <td>Coming soon</td>
-            </tr>
-        </table>
+    <section id="skills">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>Skills</h2>
+
+                <p>
+                    Skills I am developing through school and experience
+                </p>
+
+            </div>
+
+            <div class="skills-grid">
+
+                <div class="skill-card">
+                    <h3>Microsoft Excel</h3>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Financial Analysis</h3>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Data Analysis</h3>
+                </div>
+
+                <div class="skill-card">
+                    <h3>AI Tools</h3>
+                </div>
+
+                <div class="skill-card">
+                    <h3>HTML</h3>
+                </div>
+
+                <div class="skill-card">
+                    <h3>GitHub</h3>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Communication</h3>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Teamwork</h3>
+                </div>
+
+            </div>
+
+        </div>
+
     </section>
 
-    <hr>
 
-    <section>
-        <h2>Resume</h2>
-        <p>Resume coming soon.</p>
+    <!-- PROJECTS -->
+
+    <section id="projects">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>Projects</h2>
+
+                <p>
+                    Projects will be added throughout the semester
+                </p>
+
+            </div>
+
+            <div class="projects-grid">
+
+                <div class="project-card">
+
+                    <div class="project-number">
+                        PROJECT 01
+                    </div>
+
+                    <h3>Project Coming Soon</h3>
+
+                    <p>
+                        Details and results will be added here as the project
+                        is completed.
+                    </p>
+
+                </div>
+
+
+                <div class="project-card">
+
+                    <div class="project-number">
+                        PROJECT 02
+                    </div>
+
+                    <h3>Project Coming Soon</h3>
+
+                    <p>
+                        Details and results will be added here as the project
+                        is completed.
+                    </p>
+
+                </div>
+
+
+                <div class="project-card">
+
+                    <div class="project-number">
+                        PROJECT 03
+                    </div>
+
+                    <h3>Project Coming Soon</h3>
+
+                    <p>
+                        Details and results will be added here as the project
+                        is completed.
+                    </p>
+
+                </div>
+
+
+                <div class="project-card">
+
+                    <div class="project-number">
+                        PROJECT 04
+                    </div>
+
+                    <h3>Project Coming Soon</h3>
+
+                    <p>
+                        Details and results will be added here as the project
+                        is completed.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </section>
 
-    <hr>
 
-    <section>
-        <h2>Contact</h2>
+    <!-- RESUME -->
 
-        <p>
-            Email:
-            <a href="mailto:shawn.parkin@utah.edu">
-                shawn.parkin@utah.edu
-            </a>
-        </p>
+    <section id="resume" class="resume-section">
 
-        <p>
-            LinkedIn:
-            <a href="https://www.linkedin.com/in/shawn-parkin">
-                linkedin.com/in/shawn-parkin
-            </a>
-        </p>
+        <div class="container">
 
-        <p>
-            GitHub:
-            <a href="https://github.com/shawncparkin">
-                github.com/shawncparkin
-            </a>
-        </p>
+            <div class="section-title">
+
+                <h2>Resume</h2>
+
+                <p>
+                    My current professional resume
+                </p>
+
+            </div>
+
+            <div class="resume-container">
+
+                <iframe
+                    src="Shawn_Parkin_Resume.pdf">
+                </iframe>
+
+            </div>
+
+        </div>
+
     </section>
+
+
+    <!-- CONTACT -->
+
+    <section id="contact">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>Contact</h2>
+
+                <p>
+                    Feel free to connect with me
+                </p>
+
+            </div>
+
+            <div class="contact-grid">
+
+                <div class="contact-card">
+
+                    <h3>Email</h3>
+
+                    <a href="mailto:shawn.parkin@utah.edu">
+                        shawn.parkin@utah.edu
+                    </a>
+
+                </div>
+
+
+                <div class="contact-card">
+
+                    <h3>LinkedIn</h3>
+
+                    <a
+                        href="https://www.linkedin.com/in/shawn-parkin"
+                        target="_blank">
+
+                        linkedin.com/in/shawn-parkin
+
+                    </a>
+
+                </div>
+
+
+                <div class="contact-card">
+
+                    <h3>GitHub</h3>
+
+                    <a
+                        href="https://github.com/shawncparkin"
+                        target="_blank">
+
+                        github.com/shawncparkin
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        © 2026 Shawn Parkin • Finance Student • University of Utah
+
+    </footer>
 
 </body>
 
